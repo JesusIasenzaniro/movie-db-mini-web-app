@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Search from './pages/Search/Search';
+import SingleMovie from './pages/SingleMovie/Single';
 import MyList from './pages/MyList';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                 <Header />
                 <Switch>
                     <Route exact path='/search' component={Search} />
+                    <Route exact path='/search/:id' component={SingleMovie} />
                     <Route exact path='/mylist' component={MyList} />
                 </Switch>
                 <Footer />

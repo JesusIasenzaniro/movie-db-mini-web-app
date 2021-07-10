@@ -1,22 +1,23 @@
 import axios from 'axios';
 import React, { useState, useContext } from 'react';
+import { movies_url as url, token } from '../../../components/utils/constants';
 
 const MoviesContext = React.createContext();
 
 export const MoviesProvider = ({ children }) => {
     const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
+    const [singleData, setSingleData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const token = '8f781d70654b5a6f2fa69770d1d115a3';
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${token}`;
+    const newUrl = `${url}${token}`;
 
     const fetchData = async (e) => {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await axios.get(`${url}&query=${query}`);
+            const response = await axios.get(`${newUrl}&query=${query}`);
             setData(response.data.results);
             setLoading(false);
         } catch (e) {
@@ -26,13 +27,17 @@ export const MoviesProvider = ({ children }) => {
         }
     };
 
-    // console.log(data);
+    const fetchSingleData = async (url) => {
+        try {
+            const response = await axios.get(url);
 
-    // useEffect(() => {
-    //     console.log('data updated');
-    // }, [data]);
+            setSingleData(response.data);
+        } catch (e) {
+            console.log(e.message);
+        }
+    };
 
-    return <MoviesContext.Provider value={{ query, setQuery, data, fetchData, loading, error }}>{children}</MoviesContext.Provider>;
+    return <MoviesContext.Provider value={{ query, setQuery, data, fetchData, loading, error, fetchSingleData, singleData }}>{children}</MoviesContext.Provider>;
 };
 
 export const useMoviesContext = () => {

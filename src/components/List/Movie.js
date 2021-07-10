@@ -1,19 +1,19 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 import React from 'react';
 import { useStyle } from './Styles/Styles';
+import { Link } from 'react-router-dom';
+import { image_url, notImage } from '../utils/constants';
 
 const Movie = ({ movie }) => {
     const classes = useStyle();
-    const url = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-    const notImage = 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';
-
-    console.log(movie);
+    const url = `${image_url}${movie.poster_path}`;
 
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <CardMedia className={classes.media} image={movie.poster_path ? url : notImage} />
-
+                <Link to={`search/${movie.id}`} className={classes.link}>
+                    <CardMedia className={classes.media} image={movie.poster_path ? url : notImage} />
+                </Link>
                 <CardContent>
                     <Typography gutterBottom variant='h5' component='h2'>
                         {movie.title}

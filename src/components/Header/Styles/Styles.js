@@ -27,6 +27,7 @@ export const useStyle = makeStyles((theme) => ({
     },
     inputBtn: {
         padding: theme.spacing(1),
+        backgroundColor: '#01b4e4',
     },
     btnContainer: {
         display: 'flex',

@@ -6,7 +6,7 @@ import Navigation from './Navigation';
 import { useMoviesContext } from '../../pages/Search/MoviesContext/MoviesContext';
 
 const Header = () => {
-    const { query, setQuery, data, fetchData } = useMoviesContext();
+    const { query, setQuery, fetchData } = useMoviesContext();
     const classes = useStyle();
     return (
         <main className={classes.root}>

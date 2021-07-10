@@ -1,11 +1,30 @@
 import React from 'react';
 import { useStyle } from '../Styles/Styles';
 import { useMoviesContext } from './MoviesContext/MoviesContext';
+import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
+import Movies from '../../components/List/Movies';
+import Title from '../../components/Title/Title';
 
 const Search = () => {
-    const { data } = useMoviesContext();
+    const { data, loading, error } = useMoviesContext();
     const classes = useStyle();
-    return <main className={classes.root}>Search</main>;
+
+    if (loading) {
+        return <Loading />;
+    }
+    if (error) {
+        return <Error />;
+    }
+    if (data.length === 0) {
+        return <Title />;
+    }
+
+    return (
+        <main className={classes.root}>
+            <Movies data={data} />
+        </main>
+    );
 };
 
 export default Search;

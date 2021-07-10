@@ -2,15 +2,20 @@ import React from 'react';
 import { useStyle } from './Styles/Styles';
 import { Button, TextField } from '@material-ui/core';
 
-const InputField = () => {
+const InputField = ({ query, setQuery, fetchData }) => {
     const classes = useStyle();
+
+    const handleChange = (e) => {
+        setQuery(e.target.value);
+    };
+
     return (
-        <form className={classes.form}>
+        <form onSubmit={(e) => fetchData(e)} className={classes.form}>
             <article className={classes.inputContainer}>
-                <TextField className={classes.input} fullWidth placeholder='search...' />
+                <TextField value={query} onChange={handleChange} className={classes.input} fullWidth placeholder='search...' />
             </article>
             <article>
-                <Button color='primary' variant='contained' className={classes.inputBtn}>
+                <Button type='submit' color='primary' variant='contained' className={classes.inputBtn}>
                     search
                 </Button>
             </article>

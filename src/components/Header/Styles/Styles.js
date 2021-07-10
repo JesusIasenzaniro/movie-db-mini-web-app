@@ -25,6 +25,9 @@ export const useStyle = makeStyles((theme) => ({
         backgroundColor: '#fff',
         padding: theme.spacing(1, 0, 0, 1),
     },
+    inputBtn: {
+        padding: theme.spacing(1),
+    },
     btnContainer: {
         display: 'flex',
     },
@@ -38,5 +41,14 @@ export const useStyle = makeStyles((theme) => ({
         '&:hover': {
             backgroundColor: '#90cea1',
         },
+    },
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
+    link: {
+        textDecoration: 'none',
     },
 }));

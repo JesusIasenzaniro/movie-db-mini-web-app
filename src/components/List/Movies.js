@@ -1,16 +1,19 @@
 import React from 'react';
 import Movie from './Movie';
-import { useStyle } from './Styles/Styles';
-
+// import { useStyle } from './Styles/Styles';
+import { Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 const Movies = ({ data }) => {
-    const classes = useStyle();
+    // const classes = useStyle();
 
     return (
-        <main>
-            {data.map((movie) => {
-                return <Movie movie={movie} key={movie.id} />;
-            })}
-        </main>
+        <Container maxWidth='md'>
+            <Grid container justifyContent='space-around'>
+                {data.map((movie) => {
+                    return <Movie movie={movie} key={movie.id} />;
+                })}
+            </Grid>
+        </Container>
     );
 };
 

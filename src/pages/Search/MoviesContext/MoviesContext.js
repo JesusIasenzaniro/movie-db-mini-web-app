@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 
 const MoviesContext = React.createContext();
 
@@ -26,11 +26,11 @@ export const MoviesProvider = ({ children }) => {
         }
     };
 
-    console.log(data);
+    // console.log(data);
 
-    useEffect(() => {
-        console.log('data updated');
-    }, [data]);
+    // useEffect(() => {
+    //     console.log('data updated');
+    // }, [data]);
 
     return <MoviesContext.Provider value={{ query, setQuery, data, fetchData, loading, error }}>{children}</MoviesContext.Provider>;
 };

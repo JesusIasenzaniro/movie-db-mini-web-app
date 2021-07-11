@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Card, CardMedia } from '@material-ui/core';
 import { useStyle } from './Styles/Styles';
 import { image_url, notImage } from '../../components/utils/constants';
 

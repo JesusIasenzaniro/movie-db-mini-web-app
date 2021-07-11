@@ -8,6 +8,8 @@ export const MoviesProvider = ({ children }) => {
     const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
     const [singleData, setSingleData] = useState([]);
+    // const [rate, setRate] = useState('');
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 

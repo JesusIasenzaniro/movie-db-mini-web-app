@@ -4,7 +4,7 @@ import { useStyle } from './Styles/Styles';
 
 const CardDetails = ({ singleData }) => {
     const classes = useStyle();
-    console.log(singleData);
+
     return (
         <main className={classes.root}>
             <CardContent>
@@ -29,7 +29,6 @@ const CardDetails = ({ singleData }) => {
                         ))}
                     </Typography>
                 )}
-
                 <Typography className={classes.typography} variant='body2' color='textSecondary' component='p'>
                     <span className={classes.detail}> Vote average: </span>
                     {singleData.vote_average}

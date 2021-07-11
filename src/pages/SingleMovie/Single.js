@@ -9,7 +9,7 @@ import { Grid, Container } from '@material-ui/core';
 import Form from '../../components/OpinionForm/Form';
 
 const Single = () => {
-    const { fetchSingleData, singleData } = useMoviesContext();
+    const { fetchSingleData, singleData, postRate, rate, setRate, sessionId } = useMoviesContext();
     const { id } = useParams();
     const classes = useStyle();
     const newUrl = `${url}${id}?api_key=${token}`;
@@ -30,7 +30,7 @@ const Single = () => {
                 </article>
             </Grid>
             <Grid container justifyContent='center'>
-                <Form id={id} />
+                <Form id={id} postRate={postRate} rate={rate} setRate={setRate} sessionId={sessionId} />
             </Grid>
         </Container>
     );

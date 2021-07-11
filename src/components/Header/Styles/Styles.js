@@ -23,7 +23,7 @@ export const useStyle = makeStyles((theme) => ({
 
     input: {
         backgroundColor: '#fff',
-        padding: theme.spacing(1, 0, 0, 1),
+        padding: theme.spacing(1, 1, 0, 1),
     },
     inputBtn: {
         padding: theme.spacing(1),

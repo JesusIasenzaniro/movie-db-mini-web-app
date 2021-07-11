@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import './Styles/Styles.css';
 import { useStyle } from './Styles/Styles';
 const InputField = ({ query, setQuery, fetchData }) => {
     const classes = useStyle();
@@ -16,7 +15,7 @@ const InputField = ({ query, setQuery, fetchData }) => {
                 <TextField value={query} onChange={handleChange} className={classes.input} fullWidth placeholder='search...' />
             </article>
             <article>
-                <Button type='submit' variant='contained' className='inputBtn'>
+                <Button type='submit' variant='contained' className={classes.inputBtn}>
                     search
                 </Button>
             </article>

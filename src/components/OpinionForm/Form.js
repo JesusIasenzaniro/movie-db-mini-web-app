@@ -1,32 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, TextField, Button } from '@material-ui/core';
 import { useStyle } from './Styles/Styles';
 import { movie_url, token } from '../../components/utils/constants';
-import axios from 'axios';
 
-const Form = ({ id }) => {
+const Form = ({ id, postRate, rate, setRate, sessionId }) => {
     const classes = useStyle();
-    const newUrl = `${movie_url}${id}/rating?api_key=${token}`;
-    const [rate, setRate] = useState('');
+    const newUrl = `${movie_url}${id}/rating?api_key=${token}&guest_session_id=${sessionId}}`;
 
+    console.log(sessionId);
     const handleChange = (e) => {
         setRate(([e.target.name] = e.target.value));
-    };
-    const postRate = async () => {
-        try {
-            let payload = Number(rate);
-            console.log(payload);
-            let res = await axios.post(newUrl, payload);
-            let data = res.data;
-            console.log(data);
-        } catch (e) {
-            console.log(e.message);
-        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        postRate();
+        postRate(newUrl);
     };
 
     return (

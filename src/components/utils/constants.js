@@ -3,3 +3,4 @@ export const notImage = 'https://www.publicdomainpictures.net/pictures/280000/ve
 export const movie_url = 'https://api.themoviedb.org/3/movie/';
 export const token = '8f781d70654b5a6f2fa69770d1d115a3';
 export const movies_url = 'https://api.themoviedb.org/3/search/movie?api_key=';
+export const session_url = `https://api.themoviedb.org/3/authentication/guest_session/new?api_key=`;

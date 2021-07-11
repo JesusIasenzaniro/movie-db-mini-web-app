@@ -11,7 +11,7 @@ const Movie = ({ movie }) => {
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <Link to={`search/${movie.id}`} className={classes.link}>
+                <Link to={`/${movie.id}`} className={classes.link}>
                     <CardMedia className={classes.media} image={movie.poster_path ? url : notImage} />
                 </Link>
                 <CardContent>

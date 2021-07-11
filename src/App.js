@@ -12,8 +12,8 @@ function App() {
             <Router>
                 <Header />
                 <Switch>
-                    <Route exact path='/search' component={Search} />
-                    <Route exact path='/search/:id' component={SingleMovie} />
+                    <Route exact path='/' component={Search} />
+                    <Route exact path='/:id' component={SingleMovie} />
                     <Route exact path='/mylist' component={MyList} />
                 </Switch>
                 <Footer />

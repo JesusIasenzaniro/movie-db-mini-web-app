@@ -2,6 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyle = makeStyles((theme) => ({
     root: {
+        margin: theme.spacing(5, 0, 5, 0),
+    },
+
+    container: {
         minHeight: '100vh',
     },
     cardImage: {

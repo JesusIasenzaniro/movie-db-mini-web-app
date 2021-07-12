@@ -1,13 +1,13 @@
 import React from 'react';
-import { Card, CardContent, TextField, Button } from '@material-ui/core';
+import { Card, CardContent, TextField, Button, Typography } from '@material-ui/core';
 import { useStyle } from './Styles/Styles';
-import { movie_url, token } from '../../components/utils/constants';
+import { movie_url, api_key } from '../../components/utils/constants';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 const Form = ({ id, postRate, rate, setRate, sessionId }) => {
     const classes = useStyle();
-    const newUrl = `${movie_url}${id}/rating?api_key=${token}&guest_session_id=${sessionId}}`;
+    const newUrl = `${movie_url}${id}/rating?api_key=${api_key}&guest_session_id=${sessionId}`;
 
-    console.log(sessionId);
     const handleChange = (e) => {
         setRate(([e.target.name] = e.target.value));
     };
@@ -20,28 +20,45 @@ const Form = ({ id, postRate, rate, setRate, sessionId }) => {
     return (
         <Card className={classes.root}>
             <CardContent>
-                <form type='submit' onSubmit={handleSubmit}>
-                    <ul>
-                        <li>
+                <article className={classes.titleContainer}>
+                    {' '}
+                    <Typography gutterBottom variant='h6'>
+                        Rate this movie!
+                    </Typography>
+                </article>
+                <ValidatorForm type='submit' onSubmit={handleSubmit}>
+                    <ul className={classes.listContainer}>
+                        <li className={classes.inputContainer}>
                             {' '}
-                            <TextField id='standard-basic' label='Name' fullWidth />
+                            <TextField id='standard-basic' label='Name' fullWidth name='name' />
                         </li>
-                        <li>
+                        <li className={classes.inputContainer}>
                             {' '}
-                            <TextField onChange={handleChange} value={rate} id='filled-number' label='Rate' type='number' fullWidth />
+                            <TextValidator
+                                onChange={handleChange}
+                                validators={['required', 'minNumber:0.5', 'maxNumber:10']}
+                                errorMessages={['this field is required', ' the value be between 0.5 and 10']}
+                                value={rate}
+                                id='filled-number'
+                                label='Rate'
+                                type='text'
+                                fullWidth
+                                name='rate'
+                            />
                         </li>
-                        <li>
-                            {' '}
-                            <label>Comment:</label>
-                            <div>
-                                <textarea id='msg' name='comment'></textarea>
-                            </div>
+                        <li className={classes.inputContainer}>
+                            <article className={classes.labelContainer}>
+                                <label>Comment:</label>
+                            </article>
+                            <article>
+                                <textarea className={classes.textarea} id='msg' name='comment'></textarea>
+                            </article>
                         </li>
                     </ul>
-                    <Button type='submit' variant='contained' color='primary'>
+                    <Button type='submit' variant='contained' color='primary' fullWidth>
                         Submit
                     </Button>
-                </form>
+                </ValidatorForm>
             </CardContent>
         </Card>
     );

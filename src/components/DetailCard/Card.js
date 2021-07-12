@@ -1,8 +1,9 @@
 import React from 'react';
 import { CardContent, Typography } from '@material-ui/core';
 import { useStyle } from './Styles/Styles';
+import Form from '../OpinionForm/Form';
 
-const CardDetails = ({ singleData }) => {
+const CardDetails = ({ id, singleData, postRate, rate, setRate, sessionId }) => {
     const classes = useStyle();
 
     return (
@@ -43,6 +44,7 @@ const CardDetails = ({ singleData }) => {
                     {singleData.overview}
                 </Typography>
             </CardContent>
+            <Form id={id} postRate={postRate} rate={rate} setRate={setRate} sessionId={sessionId} />
         </main>
     );
 };

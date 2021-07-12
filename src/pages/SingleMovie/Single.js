@@ -6,7 +6,6 @@ import CardImage from '../../components/ImageCard/Card';
 import { movie_url as url, api_key } from '../../components/utils/constants';
 import DetailCard from '../../components/DetailCard/Card';
 import { Grid, Container } from '@material-ui/core';
-import Form from '../../components/OpinionForm/Form';
 
 const Single = () => {
     const { fetchSingleData, singleData, postRate, rate, setRate, sessionId } = useMoviesContext();
@@ -20,8 +19,8 @@ const Single = () => {
     }, [id]);
 
     return (
-        <Container maxWidth='lg' className={classes.root}>
-            <Grid container className={classes.container}>
+        <Container maxWidth='lg' className={classes.container}>
+            <Grid container className={classes.root}>
                 <article className={classes.cardImage}>
                     <CardImage singleData={singleData} />
                 </article>

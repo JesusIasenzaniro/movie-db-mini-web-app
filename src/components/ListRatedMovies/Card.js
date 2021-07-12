@@ -1,13 +1,12 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 import React from 'react';
 import { useStyle } from './Styles/Styles';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { image_url, notImage } from '../utils/constants';
+import { image_url, notImage } from '../../components/utils/constants';
 
-const Movie = ({ movie }) => {
+const CardRatedMovie = ({ movie }) => {
     const classes = useStyle();
     const url = `${image_url}${movie.poster_path}`;
-
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -27,4 +26,4 @@ const Movie = ({ movie }) => {
     );
 };
 
-export default Movie;
+export default CardRatedMovie;

@@ -1,17 +1,18 @@
 import React from 'react';
-import Movie from './Movie';
+import Card from './Card';
 import { Grid } from '@material-ui/core';
 import { Container } from '@material-ui/core';
-const Movies = ({ data }) => {
+
+const List = ({ ratedMovies }) => {
     return (
         <Container maxWidth='md'>
             <Grid container justifyContent='space-around'>
-                {data.map((movie) => {
-                    return <Movie movie={movie} key={movie.id} />;
-                })}
+                {ratedMovies.map((movie) => (
+                    <Card key={movie.id} movie={movie} />
+                ))}
             </Grid>
         </Container>
     );
 };
 
-export default Movies;
+export default List;

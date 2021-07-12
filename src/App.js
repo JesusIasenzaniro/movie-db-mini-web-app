@@ -4,8 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Search from './pages/Search/Search';
 import SingleMovie from './pages/SingleMovie/Single';
-import MyList from './pages/MyList';
-
+import MyList from './pages/MyList/MyList';
 function App() {
     return (
         <div className='App'>
@@ -13,8 +12,8 @@ function App() {
                 <Header />
                 <Switch>
                     <Route exact path='/' component={Search} />
-                    <Route exact path='/:id' component={SingleMovie} />
                     <Route exact path='/mylist' component={MyList} />
+                    <Route exact path='/movie/:id' component={SingleMovie} />
                 </Switch>
                 <Footer />
             </Router>

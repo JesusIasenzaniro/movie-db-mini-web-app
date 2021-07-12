@@ -50,7 +50,7 @@ export const DrawerHeader = () => {
                     <ListItemIcon>
                         <HomeIcon />
                     </ListItemIcon>
-                    <Link to='/search' className={classes.link}>
+                    <Link to='/' className={classes.link}>
                         <ListItemText>Home</ListItemText>
                     </Link>
                 </ListItem>

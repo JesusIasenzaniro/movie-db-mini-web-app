@@ -3,6 +3,7 @@ import { useStyle } from './Styles/Styles';
 import logo from './assets/logo.png';
 import InputField from './InputField';
 import Navigation from './Navigation';
+
 import { useMoviesContext } from '../../pages/Search/MoviesContext/MoviesContext';
 
 const Header = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import { useStyle } from './Styles/Styles';
+import { useStyle, InputButton, StyledTextField } from './Styles/Styles';
 const InputField = ({ query, setQuery, fetchData }) => {
     const classes = useStyle();
 
@@ -12,12 +12,12 @@ const InputField = ({ query, setQuery, fetchData }) => {
     return (
         <form onSubmit={(e) => fetchData(e)} className={classes.form}>
             <article className={classes.inputContainer}>
-                <TextField value={query} onChange={handleChange} className={classes.input} fullWidth placeholder='search...' />
+                <StyledTextField value={query} onChange={handleChange} className={classes.input} fullWidth placeholder='search...' />
             </article>
             <article>
-                <Button type='submit' variant='contained' className={classes.inputBtn}>
+                <InputButton type='submit' className={classes.inputBtn}>
                     search
-                </Button>
+                </InputButton>
             </article>
         </form>
     );

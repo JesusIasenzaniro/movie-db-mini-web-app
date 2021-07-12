@@ -1,4 +1,45 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import { Button, TextField } from '@material-ui/core';
+
+// The `withStyles()` higher-order component is injecting a `classes`
+// prop that is used by the `Button` component.
+export const StyledTextField = withStyles({
+    root: {
+        borderRadius: '5px',
+
+        padding: '4px',
+        backgroundColor: '#fff',
+    },
+})(TextField);
+
+export const StyledButton = withStyles({
+    root: {
+        backgroundColor: '#01b4e4',
+        color: '#fff',
+
+        '&:hover': {
+            backgroundColor: '#90cea1',
+        },
+    },
+    label: {
+        textTransform: 'capitalize',
+    },
+})(Button);
+
+export const InputButton = withStyles({
+    root: {
+        backgroundColor: '#52006A',
+        color: '#fff',
+
+        '&:hover': {
+            backgroundColor: '#867AE9',
+        },
+    },
+    label: {
+        textTransform: 'capitalize',
+    },
+})(Button);
 
 export const useStyle = makeStyles((theme) => ({
     root: {
@@ -22,12 +63,11 @@ export const useStyle = makeStyles((theme) => ({
     },
 
     input: {
-        backgroundColor: '#fff',
-        padding: theme.spacing(1, 1, 0, 1),
+        // backgroundColor: '#fff',
+        // padding: theme.spacing(1, 1, 0, 1),
     },
     inputBtn: {
         padding: theme.spacing(1),
-        backgroundColor: '#01b4e4',
     },
     btnContainer: {
         display: 'flex',
@@ -35,14 +75,14 @@ export const useStyle = makeStyles((theme) => ({
     btnBox: {
         margin: theme.spacing(1, 1, 1, 1),
     },
-    btn: {
-        backgroundColor: '#01b4e4',
-        color: '#fff',
+    // btn: {
+    //     backgroundColor: '#01b4e4',
+    //     color: '#fff',
 
-        '&:hover': {
-            backgroundColor: '#90cea1',
-        },
-    },
+    //     '&:hover': {
+    //         backgroundColor: '#90cea1',
+    //     },
+    // },
     list: {
         width: 250,
     },

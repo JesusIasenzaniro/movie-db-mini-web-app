@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Hidden } from '@material-ui/core';
-import { useStyle } from './Styles/Styles';
+import { useStyle, StyledButton } from './Styles/Styles';
 import { DrawerHeader } from './DrawerHeader';
-
+import { Link } from 'react-router-dom';
 const Navigation = () => {
     const classes = useStyle();
     return (
@@ -10,14 +10,18 @@ const Navigation = () => {
             <Hidden mdDown>
                 <section className={classes.btnContainer}>
                     <article className={classes.btnBox}>
-                        <Button color='primary' variant='contained' className={classes.btn}>
-                            Home
-                        </Button>
+                        <Link to={'/'}>
+                            <StyledButton color='primary' variant='contained' className={classes.btn}>
+                                Home
+                            </StyledButton>
+                        </Link>
                     </article>
                     <article className={classes.btnBox}>
-                        <Button variant='contained' className={classes.btn}>
-                            My List
-                        </Button>
+                        <Link to={'/mylist'}>
+                            <StyledButton variant='contained' className={classes.btn}>
+                                My List
+                            </StyledButton>
+                        </Link>
                     </article>
                 </section>
             </Hidden>

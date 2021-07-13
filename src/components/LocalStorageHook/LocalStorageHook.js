@@ -4,6 +4,7 @@ import { setAuthToken } from '../Requests';
 
 export const encryptStorage = EncryptStorage('5h33p-2o2i');
 
+// sessionId
 export const useLocalStorage = (key, initialValue) => {
     const [storedValue, setValue] = useState(() => {
         try {

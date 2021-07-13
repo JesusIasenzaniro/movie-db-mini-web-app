@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useStyle } from '../Styles/Styles';
 import { useMoviesContext } from './MoviesContext/MoviesContext';
 import Loading from '../../components/Loading/Loading';
@@ -7,8 +7,12 @@ import Movies from '../../components/List/Movies';
 import Title from '../../components/Title/Title';
 
 const Search = () => {
-    const { data, loading, error } = useMoviesContext();
+    const { data, loading, error, fetchSessionId } = useMoviesContext();
     const classes = useStyle();
+
+    // useEffect(() => {
+    //     fetchSessionId();
+    // }, []);
 
     if (loading) {
         return <Loading />;

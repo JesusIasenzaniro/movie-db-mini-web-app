@@ -7,6 +7,7 @@ import { image_url, notImage } from '../../components/utils/constants';
 const CardRatedMovie = ({ movie }) => {
     const classes = useStyle();
     const url = `${image_url}${movie.poster_path}`;
+
     return (
         <Card className={classes.root}>
             <CardActionArea>

@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useStyle, InputButton, StyledTextField } from './Styles/Styles';
-const InputField = ({ query, setQuery, fetchData }) => {
+import { useHistory } from 'react-router-dom';
+import { movies_url as url, api_key } from '../utils/constants';
+import axios from 'axios';
+
+const InputField = ({ setLoading, setData, setError }) => {
+    const [query, setQuery] = useState('');
     const classes = useStyle();
+    const history = useHistory();
+    const newUrl = `${url}${api_key}`;
 
     const handleChange = (e) => {
         setQuery(e.target.value);
+    };
+
+    const fetchData = async (e) => {
+        e.preventDefault();
+        try {
+            setLoading(true);
+            const response = await axios.get(`${newUrl}&query=${query}`);
+            setData(response.data.results);
+            history.push('/');
+            setQuery('');
+            setLoading(false);
+        } catch (e) {
+            setLoading(false);
+            setError(true);
+            console.log(e);
+        }
     };
 
     return (

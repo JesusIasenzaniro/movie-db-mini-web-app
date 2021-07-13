@@ -7,14 +7,14 @@ import Navigation from './Navigation';
 import { useMoviesContext } from '../../pages/Search/MoviesContext/MoviesContext';
 
 const Header = () => {
-    const { query, setQuery, fetchData } = useMoviesContext();
+    const { fetchData, setLoading, setData, setError } = useMoviesContext();
     const classes = useStyle();
     return (
         <main className={classes.root}>
             <article>
                 <img className={classes.img} src={logo} alt='logo' />
             </article>
-            <InputField query={query} setQuery={setQuery} fetchData={fetchData} />
+            <InputField fetchData={fetchData} setLoading={setLoading} setData={setData} setError={setError} />
             <Navigation />
         </main>
     );

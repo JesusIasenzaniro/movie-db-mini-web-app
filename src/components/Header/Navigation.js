@@ -10,14 +10,14 @@ const Navigation = () => {
             <Hidden mdDown>
                 <section className={classes.btnContainer}>
                     <article className={classes.btnBox}>
-                        <Link to={'/'}>
+                        <Link to={'/'} className={classes.link}>
                             <StyledButton color='primary' variant='contained' className={classes.btn}>
                                 Home
                             </StyledButton>
                         </Link>
                     </article>
                     <article className={classes.btnBox}>
-                        <Link to={'/mylist'}>
+                        <Link to={'/mylist'} className={classes.link}>
                             <StyledButton variant='contained' className={classes.btn}>
                                 My List
                             </StyledButton>

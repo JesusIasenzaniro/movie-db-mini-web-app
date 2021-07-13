@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, TextField, Button, Typography } from '@material-ui/core';
+import { Card, CardContent, Button, Typography } from '@material-ui/core';
 import { useStyle } from './Styles/Styles';
 import { movie_url, api_key } from '../../components/utils/constants';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -19,6 +19,7 @@ const Form = ({ id, rate, setRate, sessionId }) => {
             console.log(payload);
             let response = await axios.post(newUrl, payload);
             let data = response.data;
+            alert('rate made successfully!');
             setRate('');
             console.log(data);
         } catch (e) {
@@ -31,6 +32,13 @@ const Form = ({ id, rate, setRate, sessionId }) => {
         postRate();
     };
 
+    ValidatorForm.addValidationRule('isBetween0.5&10', () => {
+        if ((rate > 0.4 && rate < 11) || rate === '') {
+            return true;
+        }
+        return false;
+    });
+
     return (
         <Card className={classes.root}>
             <CardContent>
@@ -40,22 +48,23 @@ const Form = ({ id, rate, setRate, sessionId }) => {
                         Rate this movie!
                     </Typography>
                 </article>
+
                 <ValidatorForm type='submit' onSubmit={handleSubmit}>
                     <ul className={classes.listContainer}>
                         <li className={classes.inputContainer}>
                             {' '}
-                            <TextField id='standard-basic' label='Name' fullWidth name='name' />
+                            <TextValidator id='standard-basic' label='Name' fullWidth name='name' />
                         </li>
                         <li className={classes.inputContainer}>
                             {' '}
                             <TextValidator
                                 onChange={handleChange}
-                                validators={['required', 'minNumber:0.5', 'maxNumber:10']}
-                                errorMessages={['this field is required', ' the value be between 0.5 and 10']}
+                                validators={['required', 'isBetween0.5&10']}
+                                errorMessages={['this field is required', ' the value must be between 0.5 and 10']}
                                 value={rate}
                                 id='filled-number'
                                 label='Rate'
-                                type='text'
+                                type='number'
                                 fullWidth
                                 name='rate'
                             />
@@ -69,6 +78,7 @@ const Form = ({ id, rate, setRate, sessionId }) => {
                             </article>
                         </li>
                     </ul>
+
                     <Button type='submit' variant='contained' color='primary' fullWidth>
                         Submit
                     </Button>

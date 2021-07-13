@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useStyle, InputButton, StyledTextField } from './Styles/Styles';
 import { useHistory } from 'react-router-dom';
@@ -19,12 +18,16 @@ const InputField = ({ setLoading, setData, setError }) => {
     const fetchData = async (e) => {
         e.preventDefault();
         try {
-            setLoading(true);
-            const response = await axios.get(`${newUrl}&query=${query}`);
-            setData(response.data.results);
-            history.push('/');
-            setQuery('');
-            setLoading(false);
+            if (query) {
+                setLoading(true);
+                const response = await axios.get(`${newUrl}&query=${query}`);
+                setData(response.data.results);
+                history.push('/');
+                setQuery('');
+                setLoading(false);
+            } else {
+                alert('You must search for a movie');
+            }
         } catch (e) {
             setLoading(false);
             setError(true);

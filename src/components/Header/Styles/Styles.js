@@ -2,14 +2,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, TextField } from '@material-ui/core';
 
-// The `withStyles()` higher-order component is injecting a `classes`
-// prop that is used by the `Button` component.
 export const StyledTextField = withStyles({
     root: {
         borderRadius: '5px',
-
         padding: '4px',
         backgroundColor: '#fff',
+        '& .MuiInput-underline:after ': {
+            border: 0,
+        },
+        '& .MuiInput-underline:before': {
+            border: 0,
+        },
+        '& .MuiInput-underline:hover:(.Mui-disabled):before': {
+            border: 0,
+        },
     },
 })(TextField);
 
@@ -51,7 +57,8 @@ export const useStyle = makeStyles((theme) => ({
         padding: theme.spacing(1),
     },
     img: {
-        width: '70px',
+        width: '53px',
+        paddingRight: theme.spacing(2),
     },
     form: {
         display: 'flex',
@@ -62,34 +69,24 @@ export const useStyle = makeStyles((theme) => ({
         width: '100%',
     },
 
-    input: {
-        // backgroundColor: '#fff',
-        // padding: theme.spacing(1, 1, 0, 1),
-    },
     inputBtn: {
         padding: theme.spacing(1),
     },
     btnContainer: {
         display: 'flex',
     },
+    link: {
+        textDecoration: 'none',
+    },
+
     btnBox: {
         margin: theme.spacing(1, 1, 1, 1),
     },
-    // btn: {
-    //     backgroundColor: '#01b4e4',
-    //     color: '#fff',
 
-    //     '&:hover': {
-    //         backgroundColor: '#90cea1',
-    //     },
-    // },
     list: {
         width: 250,
     },
     fullList: {
         width: 'auto',
-    },
-    link: {
-        textDecoration: 'none',
     },
 }));

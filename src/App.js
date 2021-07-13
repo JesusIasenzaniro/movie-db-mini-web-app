@@ -5,16 +5,19 @@ import Footer from './components/Footer/Footer';
 import Search from './pages/Search/Search';
 import SingleMovie from './pages/SingleMovie/Single';
 import MyList from './pages/MyList/MyList';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 function App() {
     return (
         <div className='App'>
             <Router>
                 <Header />
-                <Switch>
-                    <Route exact path='/' component={Search} />
-                    <Route exact path='/mylist' component={MyList} />
-                    <Route exact path='/movie/:id' component={SingleMovie} />
-                </Switch>
+                <ScrollToTop>
+                    <Switch>
+                        <Route exact path='/' component={Search} />
+                        <Route exact path='/mylist' component={MyList} />
+                        <Route exact path='/movie/:id' component={SingleMovie} />
+                    </Switch>
+                </ScrollToTop>
                 <Footer />
             </Router>
         </div>

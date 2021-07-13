@@ -3,8 +3,9 @@ import { Card, CardContent, TextField, Button, Typography } from '@material-ui/c
 import { useStyle } from './Styles/Styles';
 import { movie_url, api_key } from '../../components/utils/constants';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import axios from 'axios';
 
-const Form = ({ id, postRate, rate, setRate, sessionId }) => {
+const Form = ({ id, rate, setRate, sessionId }) => {
     const classes = useStyle();
     const newUrl = `${movie_url}${id}/rating?api_key=${api_key}&guest_session_id=${sessionId}`;
 
@@ -12,9 +13,22 @@ const Form = ({ id, postRate, rate, setRate, sessionId }) => {
         setRate(([e.target.name] = e.target.value));
     };
 
+    const postRate = async () => {
+        try {
+            let payload = { value: Number(rate) };
+            console.log(payload);
+            let response = await axios.post(newUrl, payload);
+            let data = response.data;
+            setRate('');
+            console.log(data);
+        } catch (e) {
+            console.log(e.message);
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        postRate(newUrl);
+        postRate();
     };
 
     return (

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Hidden } from '@material-ui/core';
+import { Hidden } from '@material-ui/core';
 import { useStyle, StyledButton } from './Styles/Styles';
 import { DrawerHeader } from './DrawerHeader';
 import { Link } from 'react-router-dom';
+
 const Navigation = () => {
     const classes = useStyle();
     return (

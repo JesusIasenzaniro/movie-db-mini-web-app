@@ -37,10 +37,13 @@ export const InputButton = withStyles({
     root: {
         backgroundColor: '#52006A',
         color: '#fff',
+        borderRadius: '0 3px 3px 0',
 
         '&:hover': {
             backgroundColor: '#867AE9',
         },
+        height: '40px',
+        width: '10px',
     },
     label: {
         textTransform: 'capitalize',

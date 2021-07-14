@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SearchIcon from '@material-ui/icons/Search';
 import { useStyle, InputButton, StyledTextField } from './Styles/Styles';
 import { useHistory } from 'react-router-dom';
 import { movies_url as url, api_key } from '../utils/constants';
@@ -22,6 +21,7 @@ const InputField = ({ setLoading, setData, setError }) => {
                 setLoading(true);
                 const response = await axios.get(`${newUrl}&query=${query}`);
                 setData(response.data.results);
+                console.log(response.data.results);
                 history.push('/');
                 setQuery('');
                 setLoading(false);
@@ -42,7 +42,8 @@ const InputField = ({ setLoading, setData, setError }) => {
             </article>
             <article>
                 <InputButton type='submit' className={classes.inputBtn}>
-                    search
+                    {' '}
+                    Search
                 </InputButton>
             </article>
         </form>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useStyle } from './Styles/Styles';
-
+import './Styles/Styles.css';
 const Loading = () => {
     const classes = useStyle();
     return (
         <main className={classes.root}>
-            <h2>Loading...</h2>
+            <article className='lds-dual-ring'></article>
         </main>
     );
 };

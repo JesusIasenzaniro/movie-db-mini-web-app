@@ -4,23 +4,31 @@ import { useStyle } from './Styles/Styles';
 import { movie_url, api_key } from '../../components/utils/constants';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import axios from 'axios';
-
-const Form = ({ id, rate, setRate, sessionId }) => {
+import { useHistory } from 'react-router-dom';
+import { StyledButton } from '../GlobalComponents/StyledButton';
+const Form = ({ id, sessionId, detail, setDetail }) => {
     const classes = useStyle();
     const newUrl = `${movie_url}${id}/rating?api_key=${api_key}&guest_session_id=${sessionId}`;
+    const history = useHistory();
 
     const handleChange = (e) => {
-        setRate(([e.target.name] = e.target.value));
+        setDetail({
+            ...detail,
+            [e.target.name]: e.target.value,
+        });
     };
 
     const postRate = async () => {
         try {
-            let payload = { value: Number(rate) };
-            console.log(payload);
+            let payload = { value: Number(detail.rate) };
             let response = await axios.post(newUrl, payload);
             let data = response.data;
             alert('rate made successfully!');
-            setRate('');
+            setDetail({
+                name: '',
+                rate: '',
+            });
+            history.push('/mylist');
             console.log(data);
         } catch (e) {
             console.log(e.message);
@@ -33,7 +41,13 @@ const Form = ({ id, rate, setRate, sessionId }) => {
     };
 
     ValidatorForm.addValidationRule('isBetween0.5&10', () => {
-        if ((rate > 0.4 && rate < 11) || rate === '') {
+        if ((detail.rate > 0.4 && detail.rate < 11) || detail.rate === '') {
+            return true;
+        }
+        return false;
+    });
+    ValidatorForm.addValidationRule('isNotEmpty', () => {
+        if (detail.name) {
             return true;
         }
         return false;
@@ -44,7 +58,7 @@ const Form = ({ id, rate, setRate, sessionId }) => {
             <CardContent>
                 <article className={classes.titleContainer}>
                     {' '}
-                    <Typography gutterBottom variant='h6'>
+                    <Typography className={classes.rateTitle} gutterBottom variant='h6'>
                         Rate this movie!
                     </Typography>
                 </article>
@@ -52,8 +66,16 @@ const Form = ({ id, rate, setRate, sessionId }) => {
                 <ValidatorForm type='submit' onSubmit={handleSubmit}>
                     <ul className={classes.listContainer}>
                         <li className={classes.inputContainer}>
-                            {' '}
-                            <TextValidator id='standard-basic' label='Name' fullWidth name='name' />
+                            <TextValidator
+                                onChange={handleChange}
+                                fullWidth
+                                validators={['isNotEmpty']}
+                                errorMessages={['this field is required']}
+                                id='standard-basic'
+                                label='Name'
+                                name='name'
+                                value={detail.name}
+                            />
                         </li>
                         <li className={classes.inputContainer}>
                             {' '}
@@ -61,7 +83,7 @@ const Form = ({ id, rate, setRate, sessionId }) => {
                                 onChange={handleChange}
                                 validators={['required', 'isBetween0.5&10']}
                                 errorMessages={['this field is required', ' the value must be between 0.5 and 10']}
-                                value={rate}
+                                value={detail.rate}
                                 id='filled-number'
                                 label='Rate'
                                 type='number'
@@ -79,9 +101,9 @@ const Form = ({ id, rate, setRate, sessionId }) => {
                         </li>
                     </ul>
 
-                    <Button type='submit' variant='contained' color='primary' fullWidth>
+                    <StyledButton type='submit' variant='contained' fullWidth>
                         Submit
-                    </Button>
+                    </StyledButton>
                 </ValidatorForm>
             </CardContent>
         </Card>

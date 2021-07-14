@@ -3,7 +3,7 @@ import { CardContent, Typography } from '@material-ui/core';
 import { useStyle } from './Styles/Styles';
 import Form from '../OpinionForm/Form';
 
-const CardDetails = ({ id, singleData, postRate, rate, setRate, sessionId }) => {
+const CardDetails = ({ id, singleData, postRate, detail, setDetail, sessionId }) => {
     const classes = useStyle();
 
     return (
@@ -44,7 +44,7 @@ const CardDetails = ({ id, singleData, postRate, rate, setRate, sessionId }) => 
                     {singleData.overview}
                 </Typography>
             </CardContent>
-            <Form id={id} postRate={postRate} rate={rate} setRate={setRate} sessionId={sessionId} />
+            <Form id={id} postRate={postRate} sessionId={sessionId} detail={detail} setDetail={setDetail} />
         </main>
     );
 };

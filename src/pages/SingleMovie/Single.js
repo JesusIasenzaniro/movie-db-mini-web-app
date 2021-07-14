@@ -11,7 +11,7 @@ import Loading from '../../components/Loading/Loading';
 import axios from 'axios';
 
 const Single = () => {
-    const { singleData, setSingleData, postRate, rate, setRate, sessionId, loading, setLoading } = useMoviesContext();
+    const { singleData, setSingleData, postRate, detail, setDetail, sessionId, loading, setLoading } = useMoviesContext();
     const { id } = useParams();
     const classes = useStyle();
     const newUrl = `${url}${id}?api_key=${api_key}`;
@@ -43,7 +43,7 @@ const Single = () => {
                     <CardImage singleData={singleData} />
                 </article>
                 <article className={classes.cardDetail}>
-                    <DetailCard id={id} singleData={singleData} postRate={postRate} rate={rate} setRate={setRate} sessionId={sessionId} />
+                    <DetailCard id={id} singleData={singleData} postRate={postRate} detail={detail} setDetail={setDetail} sessionId={sessionId} />
                 </article>
             </Grid>
             {/* <Grid container justifyContent='center'>

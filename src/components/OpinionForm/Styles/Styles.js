@@ -4,11 +4,13 @@ export const useStyle = makeStyles((theme) => ({
     root: {
         height: 'fit-content',
         width: '100%',
-        // padding: theme.spacing(1),
     },
     titleContainer: {
         textAlign: 'center',
-        color: 'blue',
+    },
+    rateTitle: {
+        color: '#52006A',
+        fontWeight: 'bold',
     },
 
     listContainer: {

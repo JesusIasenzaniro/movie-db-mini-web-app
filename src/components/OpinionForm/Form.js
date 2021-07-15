@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Button, Typography } from '@material-ui/core';
+import { Card, CardContent, Typography } from '@material-ui/core';
 import { useStyle } from './Styles/Styles';
 import { movie_url, api_key } from '../../components/utils/constants';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';

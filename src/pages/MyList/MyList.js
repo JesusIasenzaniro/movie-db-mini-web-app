@@ -26,6 +26,7 @@ const Mylist = () => {
 
     useEffect(() => {
         fetchRatedMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (loading) {

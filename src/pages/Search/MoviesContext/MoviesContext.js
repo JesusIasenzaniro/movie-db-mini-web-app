@@ -12,7 +12,7 @@ export const MoviesProvider = ({ children }) => {
     const [error, setError] = useState(false);
     const [ratedMovies, setRatedMovies] = useState([]);
 
-    const sessionId = '395fd26f66156bb86e89322befca1ab3';
+    const sessionId = 'da8909fad737cd61fbfdc63c9fcc8d11';
     // const [sessionId, setSessionId] = useState('');
 
     return (

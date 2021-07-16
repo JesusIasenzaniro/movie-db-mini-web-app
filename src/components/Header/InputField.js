@@ -21,7 +21,6 @@ const InputField = ({ setLoading, setData, setError }) => {
                 setLoading(true);
                 const response = await axios.get(`${newUrl}&query=${query}`);
                 setData(response.data.results);
-                console.log(response.data.results);
                 history.push('/');
                 setQuery('');
                 setLoading(false);
